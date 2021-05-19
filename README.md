@@ -4,10 +4,10 @@
 19/05/2021.
 
 ### Project Title
-Bikeshare Project
+Bikeshare Projects
 
 ### Description
-Create a python code that shows the statistic of bikeshare services
+Create a python code that shows the statistic of usage of bikeshare services
 
 ### Files used
 chicago.csv, washington.csv, new_york_city.csv
