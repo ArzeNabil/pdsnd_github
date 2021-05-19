@@ -29,7 +29,7 @@ def get_filters():
     while month not in month_ls:
         print("The month you have input does not exist")
         month = input("Please enter the month of service :")
-        
+
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     day_ls = ['all', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
@@ -37,7 +37,7 @@ def get_filters():
     while day not in day_ls:
         print("The day you have input does not exist")
         day = input("Please enter the day of service :")
-    
+
 
 
     print('-'*40)
@@ -148,17 +148,17 @@ def trip_duration_stats(df):
     df['time_traveled'] = df['End Time'] - df['Start Time']
     total_time_traveled = df['time_traveled'].sum()
     print('\n')
-    
+
     #print(df['time_traveled'])
     print('Total Duration of Travel Time :')
     print(total_time_traveled)
     print('\n')
-    
+
     # TO DO: display mean travel time
     print('Average Duration of Rental Travel Time :')
     mean_time = mean(df['time_traveled'])
     print(mean_time)
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -174,13 +174,13 @@ def user_stats(df):
     Typecount = df['User Type'].value_counts()
     print(Typecount)
     print('\n')
-    
+
     # TO DO: Display counts of gender
     print("Frequency of Usage Based on Users' Gender Types :")
     Gendercount = df['Gender'].value_counts()
     print(Gendercount)
     print('\n')
-    
+
     # TO DO: Display earliest, most recent, and most common year of birth
     Youngest = df['Birth Year'].max()
     Oldest = df['Birth Year'].min()
@@ -200,22 +200,23 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
+
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        
+
         view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n').lower()
         start_loc = 0
         while (view_data != 'no'):
             if (view_data == 'yes'):
                 print(df.iloc[start_loc:start_loc+5])
+                print('-'*40)
                 start_loc += 5
                 view_data = input("Do you wish to continue?: ").lower()
             else :
                 view_data = input("please type 'yes' or 'no' :").lower()
-        
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
